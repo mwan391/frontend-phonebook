@@ -1,9 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #f8bbd0;
+}
+
+html,
+body,
+#root {
+  font-family: "Karla", sans-serif;
+  height: 100%;
+  background-color: var(--bg-color);
+  background-image: url("./images/blue-blob.png"), url("./images/yellow-blob.png");
+  background-position: left bottom, right top;
+  background-repeat: no-repeat;
+  background-size: 20%;
+}
+
 .notification {
-    color: red;
-    background: lightgrey;
-    font-size: 20px;
-    border-style: solid;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+  color: red;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.pageContainer {}

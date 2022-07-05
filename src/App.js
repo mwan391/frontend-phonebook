@@ -9,7 +9,7 @@ import Notification from './components/Notification'
 
 const App = () => {
 
-  const [persons, setPersons] = useState([]) 
+  const [persons, setPersons] = useState([])
   const [message, setMessage] = useState(null)
 
   useEffect(() => {
@@ -32,16 +32,16 @@ const App = () => {
   const [filter, setFilter] = useState(false)
   const [filterName, setFilterName] = useState('')
 
-  const peopleToShow = !filter 
+  const peopleToShow = !filter
     ? persons
-    : persons.filter(person => 
+    : persons.filter(person =>
       person.name.toLowerCase().includes(filterName.trim().toLowerCase()))
 
   const addPerson = (event) => {
     event.preventDefault()
 
     const currentNames = persons.map(person => person.name)
-    
+
     if (currentNames.includes(newName.trim())) {
       if (window.confirm(`${newName} is already in phonebook, update number?`)) {
         const foundPerson = persons.find(person => person.name === newName.trim())
@@ -58,15 +58,15 @@ const App = () => {
     personService
       .create(personObject)
       .then(returnedPerson => {
-       console.log(returnedPerson)
-       setPersons(persons.concat(returnedPerson))
-       setMessage(`Added ${returnedPerson.name}`)
-       setTimeout(() => {
-         setMessage(null)
-       }, 5000)
-       setNewName('')
-       setNewNumber('')
-     })
+        console.log(returnedPerson)
+        setPersons(persons.concat(returnedPerson))
+        setMessage(`Added ${returnedPerson.name}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
+        setNewName('')
+        setNewNumber('')
+      })
   }
 
   const updatePerson = (person) => {
@@ -91,7 +91,7 @@ const App = () => {
         setPersons(persons.filter(p => p.id !== person.id))
       })
 
-      return 
+    return
 
   }
 
@@ -119,24 +119,23 @@ const App = () => {
     }
     console.log('deleted person', id)
     personService
-    .deleteOne(id)
+      .deleteOne(id)
     setPersons(persons.filter(pers => pers.id !== id))
   }
 
 
   return (
-    
-    <div>
+    <div class="pageContainer">
       <h2>Phonebook</h2>
-      <Notification 
+      <Notification
         message={message}
       />
       <Filter
-        filterName={filterName}   
+        filterName={filterName}
         handleNameFilter={handleNameFilter}
       />
       <h3>Add a new</h3>
-      <PersonForm 
+      <PersonForm
         addPerson={addPerson}
         newName={newName}
         newNumber={newNumber}
@@ -144,8 +143,8 @@ const App = () => {
         handleNumberChange={handleNumberChange}
       />
       <h3>Numbers</h3>
-      <Persons 
-        peopleToShow={peopleToShow} 
+      <Persons
+        peopleToShow={peopleToShow}
         deletePerson={deletePerson}
       />
     </div>

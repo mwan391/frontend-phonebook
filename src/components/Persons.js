@@ -16,7 +16,8 @@ const Persons = (props) => {
 
         >
           {props.peopleToShow.map(person =>
-            <Grid key={person.id}>
+            <Grid
+              item key={person.id}>
               <Person
                 name={person.name}
                 number={person.number}
